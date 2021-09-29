@@ -54,6 +54,7 @@ export default function App() {
             headerTitle: () => (
               <Text style={{ fontFamily: "M600", fontSize: 18 }}>Home</Text>
             ),
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
@@ -66,6 +67,7 @@ export default function App() {
             headerTitle: () => (
               <Text style={{ fontFamily: "M600", fontSize: 18 }}>About Me</Text>
             ),
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
@@ -80,6 +82,7 @@ export default function App() {
                 Calculator
               </Text>
             ),
+            headerTitleAlign: "center",
           }}
         />
       </Stack.Navigator>
