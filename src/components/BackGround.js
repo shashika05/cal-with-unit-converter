@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import tailwind from "tailwind-rn";
 
-const BackGround = () => {
+const Background = () => {
   return (
     <View
       style={[
@@ -38,4 +38,4 @@ const BackGround = () => {
   );
 };
 
-export default BackGround;
+export default Background;

@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import tailwind from "tailwind-rn";
 
-import BackGround from "../components/BackGround";
+import Background from "../components/Background";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -22,7 +22,7 @@ const Home = () => {
         </Text>
       </TouchableOpacity>
       {/* --- Absolute View for BG --- */}
-      <BackGround />
+      <Background />
     </View>
   );
 };
