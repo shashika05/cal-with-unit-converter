@@ -6,7 +6,10 @@ import { useNavigation } from "@react-navigation/native";
 const AboutButton = () => {
   const nagigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => nagigation.navigate("About")}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => nagigation.navigate("About")}
+    >
       <Feather name="info" size={24} color="black" />
     </TouchableOpacity>
   );

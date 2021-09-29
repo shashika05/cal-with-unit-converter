@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 const BackButton = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.goBack()}>
+    <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
       <Ionicons name="caret-back" size={24} color="black" />
     </TouchableOpacity>
   );
