@@ -15,7 +15,8 @@ import AboutButton from "./src/components/buttons/AboutButton";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [loaded, error] = useFonts({
+  // Used useFonts hook to use custom fonts
+  const [loaded] = useFonts({
     M100: require("./assets/fonts/M100.ttf"),
     M100i: require("./assets/fonts/M100i.ttf"),
     M200: require("./assets/fonts/M200.ttf"),
@@ -38,7 +39,6 @@ export default function App() {
 
   if (!loaded) {
     // When font failed to loads
-    console.log("Font loads fail: ", error);
     return null;
   }
   return (
@@ -49,17 +49,11 @@ export default function App() {
           name="Home"
           options={{
             headerLeft: () => <AboutButton />,
+            headerBackVisible: false,
+            headerBackTitleVisible: false,
             headerTitle: () => (
               <Text style={{ fontFamily: "M600", fontSize: 18 }}>Home</Text>
             ),
-          }}
-        />
-        <Stack.Screen
-          children={() => <Cal />}
-          name="Cal"
-          options={{
-            headerLeft: () => <BackButton />,
-            headerBackTitleVisible: false,
           }}
         />
         <Stack.Screen
@@ -68,6 +62,24 @@ export default function App() {
           options={{
             headerLeft: () => <BackButton />,
             headerBackTitleVisible: false,
+            headerBackVisible: false,
+            headerTitle: () => (
+              <Text style={{ fontFamily: "M600", fontSize: 18 }}>About Me</Text>
+            ),
+          }}
+        />
+        <Stack.Screen
+          children={() => <Cal />}
+          name="Cal"
+          options={{
+            headerLeft: () => <BackButton />,
+            headerBackVisible: false,
+            headerBackTitleVisible: false,
+            headerTitle: () => (
+              <Text style={{ fontFamily: "M600", fontSize: 18 }}>
+                Calculator
+              </Text>
+            ),
           }}
         />
       </Stack.Navigator>
