@@ -21,7 +21,7 @@ const Background = () => {
       <View
         style={[
           tailwind(
-            "absolute w-96 h-96 -bottom-40 -left-12 bg-red-200 rounded-full"
+            "absolute w-96 h-96 -bottom-40 -left-12 bg-purple-200 rounded-full"
           ),
           // { zIndex: -20 },
         ]}
@@ -29,7 +29,7 @@ const Background = () => {
       <View
         style={[
           tailwind(
-            "absolute w-72 h-72 -bottom-40 -right-12 bg-blue-200 rounded-full"
+            "absolute w-72 h-72 -bottom-40 -right-12 bg-green-200 rounded-full"
           ),
           // { zIndex: -10 },
         ]}
