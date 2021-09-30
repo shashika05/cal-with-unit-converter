@@ -6,46 +6,63 @@ import { Ionicons } from "@expo/vector-icons";
 import Background from "../components/Background";
 
 const Cal = () => {
+  // Needs to implement DotPress Events and Handles
   const [text, setText] = useState("");
-  // const [dotPress, enableDotPress] = useState(false);
+  const [placeHolder, setPlaceHolder] = useState("0");
+  const [dataArray, setDataArray] = useState([]);
   const onNumPress = (keyPress) => {
     setText(text + keyPress);
   };
-  const onClearButtonPress = () => {
+  const onBackSpacePress = () => {
     //
     setText(text.slice(0, -1));
-    // enableDotPress(false);
+  };
+
+  const onClearButtonPress = () => {
+    setText("");
+    setPlaceHolder("");
+    setDataArray([]);
   };
 
   const onEqualPress = () => {
     // Equal Handle
+    text === "" ? null : dataArray.push(Number(text));
     console.log(typeof Number(text), Number(text));
+    console.log(dataArray);
   };
 
-  const dotPressTextHanle = () => {
-    // enableDotPress(true);
+  const onDorPress = () => {
     text === "" ? setText(0 + ".") : setText(text + ".");
   };
+
+  const onMinusPress = () => {
+    text === "" ? setText("-") : null;
+  };
+
+  const onPlusPress = () => {
+    text === "-"
+      ? setText("")
+      : dataArray.push(Number(text)) && setPlaceHolder(text + "+");
+    setText("");
+  };
   return (
-    <View style={tailwind("flex items-center w-full h-full")}>
+    <View style={tailwind("flex items-center justify-center w-full h-full")}>
       <View
         style={[
           tailwind(
-            "flex flex-col items-center w-72 h-96 mt-16 bg-gray-200 border-2 border-gray-800 rounded-2xl"
+            "flex flex-col items-center w-72 h-96 bg-gray-200 border-2 border-gray-800 rounded-2xl"
           ),
           { backgroundColor: "transparent" },
         ]}
       >
         <TextInput
           style={[
-            tailwind(
-              "w-72 h-12 border-b-2 border-gray-800 mt-2 rounded-xl pr-14"
-            ),
-            { fontSize: 24, fontFamily: "M400" },
+            tailwind("w-72 h-12 border-b-2 border-gray-800 mt-2 rounded-xl"),
+            { fontSize: 28, fontFamily: "M400", paddingRight: 52 },
           ]}
           value={text}
           onChangeText={(e) => setText(e)}
-          placeholder="0"
+          placeholder={placeHolder}
           textAlign="right"
           keyboardType="numeric"
         />
@@ -56,8 +73,8 @@ const Cal = () => {
             tailwind("justify-center items-center absolute"),
             { right: 16, top: 14 },
           ]}
-          onPress={() => onClearButtonPress()}
-          onLongPress={() => setText("")}
+          onPress={() => onBackSpacePress()}
+          onLongPress={() => onClearButtonPress()}
         >
           <Ionicons name="ios-backspace" size={32} color="black" />
         </TouchableOpacity>
@@ -95,6 +112,7 @@ const Cal = () => {
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
             // Plus sign
+            onPress={() => onPlusPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>+</Text>
           </TouchableOpacity>
@@ -133,6 +151,7 @@ const Cal = () => {
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
             // Minus sign
+            onPress={() => onMinusPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>-</Text>
           </TouchableOpacity>
@@ -181,7 +200,7 @@ const Cal = () => {
             style={tailwind(
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
-            onPress={() => setText("")}
+            onPress={() => onClearButtonPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>C</Text>
           </TouchableOpacity>
@@ -199,7 +218,7 @@ const Cal = () => {
             style={tailwind(
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
-            onPress={() => dotPressTextHanle()}
+            onPress={() => onDorPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>.</Text>
           </TouchableOpacity>
@@ -215,7 +234,7 @@ const Cal = () => {
         </View>
         <TouchableOpacity
           // Equal Sign
-          activeOpacity={0.8}
+          activeOpacity={0.97}
           style={[
             tailwind(
               "absolute justify-center items-center w-16 h-16 bg-gray-800 rounded-full ml-2"
