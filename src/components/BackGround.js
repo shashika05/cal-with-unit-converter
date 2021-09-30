@@ -1,6 +1,7 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import tailwind from "tailwind-rn";
+import { Ionicons } from "@expo/vector-icons";
 
 const Background = () => {
   return (
@@ -34,6 +35,18 @@ const Background = () => {
           // { zIndex: -10 },
         ]}
       />
+      <View
+        style={tailwind(
+          "flex flex-row justify-center items-center absolute bottom-3"
+        )}
+      >
+        <Text style={{ fontFamily: "M500", fontSize: 14 }}>Made with </Text>
+        <Ionicons name="heart" size={14} color="red" />
+        <Text style={{ fontFamily: "M500", fontSize: 14, color: "black" }}>
+          {" "}
+          in 🇱🇰
+        </Text>
+      </View>
     </View>
   );
 };
