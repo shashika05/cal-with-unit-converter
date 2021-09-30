@@ -75,6 +75,7 @@ export default function App() {
           name="Cal"
           options={{
             headerLeft: () => <BackButton />,
+            headerRight: () => <AboutButton />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
