@@ -44,7 +44,10 @@ const Background = () => {
         <Ionicons name="heart" size={14} color="red" />
         <Text style={{ fontFamily: "M500", fontSize: 14, color: "black" }}>
           {" "}
-          in 🇱🇰
+          in{" "}
+        </Text>
+        <Text style={{ fontFamily: "M500", fontSize: 13, color: "black" }}>
+          🇱🇰
         </Text>
       </View>
     </View>
