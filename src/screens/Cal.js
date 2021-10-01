@@ -10,25 +10,69 @@ const Cal = () => {
   const [text, setText] = useState("");
   const [placeHolder, setPlaceHolder] = useState("0");
   const [dataArray, setDataArray] = useState([]);
+  const [operatorArray, setOperatorArray] = useState([]);
+  const [calculatedArray, setCalculatedArray] = useState([]);
   const onNumPress = (keyPress) => {
     setText(text + keyPress);
   };
   const onBackSpacePress = () => {
     //
     setText(text.slice(0, -1));
+    if (text === "" && placeHolder) {
+      setText(placeHolder.slice(0, -1));
+      operatorArray.pop();
+      dataArray.pop();
+    }
+  };
+
+  const calculaingHandle = () => {
+    // +
+    if (dataArray.length === 2 && operatorArray[0] === "+") {
+      dataArray.push(
+        Number(
+          dataArray[dataArray.length - 1] + dataArray[dataArray.length - 2]
+        )
+      );
+      setText(String(dataArray[dataArray.length - 1]));
+    }
+    // // -
+    // if (dataArray.length === 2 && operatorArray[0] === "-") {
+    //   dataArray.push(
+    //     Number(
+    //       dataArray[dataArray.length - 1] - dataArray[dataArray.length - 2]
+    //     )
+    //   );
+    //   setText(String(dataArray[dataArray.length - 1]));
+    // }
+    setDataArray([]);
+    text === "" ? null : dataArray.push(Number(text));
+    operatorArray.pop();
+    console.log("-----Cal handle function-------");
+    console.log("dataArray: ", dataArray);
+    console.log("operatorArray: ", operatorArray);
+    console.log("calculatedArray: ", calculatedArray);
+    console.log("-----------------------------------");
   };
 
   const onClearButtonPress = () => {
     setText("");
-    setPlaceHolder("");
+    setPlaceHolder("0");
     setDataArray([]);
+    setOperatorArray([]);
+    setCalculatedArray([]);
   };
 
   const onEqualPress = () => {
     // Equal Handle
-    text === "" ? null : dataArray.push(Number(text));
-    console.log(typeof Number(text), Number(text));
-    console.log(dataArray);
+    // dataArray[0] === null && text === "0" ? null : dataArray.push(Number(text));
+    operatorArray.length >= 1 ? dataArray.push(Number(text)) : null;
+    calculaingHandle();
+    // console.log(typeof Number(text), Number(text));
+    // console.log("dataArray: ", dataArray);
+    // console.log("operatorArray: ", operatorArray);
+    // console.log("calculatedArray: ", calculatedArray);
+    // console.log("-----------------------------------");
+    //
   };
 
   const onDorPress = () => {
@@ -36,21 +80,27 @@ const Cal = () => {
   };
 
   const onMinusPress = () => {
-    text === "" ? setText("-") : null;
+    text === ""
+      ? setText("-")
+      : dataArray.push(Number(text)) &&
+        operatorArray.push("-") &&
+        setPlaceHolder(text + "-");
   };
 
   const onPlusPress = () => {
     text === "-"
       ? setText("")
-      : dataArray.push(Number(text)) && setPlaceHolder(text + "+");
+      : dataArray.push(Number(text)) &&
+        operatorArray.push("+") &&
+        setPlaceHolder(text + "+");
     setText("");
   };
   return (
-    <View style={tailwind("flex items-center justify-center w-full h-full")}>
+    <View style={tailwind("flex items-center w-full h-full")}>
       <View
         style={[
           tailwind(
-            "flex flex-col items-center w-72 h-96 bg-gray-200 border-2 border-gray-800 rounded-2xl"
+            "flex flex-col items-center w-72 h-96 mt-24 bg-gray-200 border-2 border-gray-800 rounded-2xl"
           ),
           { backgroundColor: "transparent" },
         ]}
@@ -234,7 +284,7 @@ const Cal = () => {
         </View>
         <TouchableOpacity
           // Equal Sign
-          activeOpacity={0.97}
+          // activeOpacity={0.97}
           style={[
             tailwind(
               "absolute justify-center items-center w-16 h-16 bg-gray-800 rounded-full ml-2"
