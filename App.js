@@ -48,7 +48,6 @@ export default function App() {
           children={() => <Home />}
           name="Home"
           options={{
-            headerTransparent: true,
             headerLeft: () => <AboutButton />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
@@ -62,7 +61,6 @@ export default function App() {
           children={() => <About />}
           name="About"
           options={{
-            headerTransparent: true,
             headerLeft: () => <BackButton />,
             headerBackTitleVisible: false,
             headerBackVisible: false,
@@ -76,7 +74,6 @@ export default function App() {
           children={() => <Cal />}
           name="Cal"
           options={{
-            headerTransparent: true,
             headerLeft: () => <BackButton />,
             headerRight: () => <AboutButton />,
             headerBackVisible: false,
