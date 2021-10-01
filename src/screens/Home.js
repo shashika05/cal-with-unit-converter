@@ -9,10 +9,10 @@ import Background from "../components/Background";
 const Home = () => {
   const navigation = useNavigation();
   return (
-    <View style={tailwind("flex items-center justify-center w-full h-full")}>
+    <View style={tailwind("flex items-center w-full h-full")}>
       <TouchableOpacity
         style={tailwind(
-          "w-72 h-20 bg-gray-800 rounded-xl items-center justify-center"
+          "w-72 h-20 mt-32 bg-gray-800 rounded-xl items-center justify-center"
         )}
         activeOpacity={0.8}
         onPress={() => navigation.navigate("Cal")}
