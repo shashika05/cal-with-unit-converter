@@ -1,3 +1,5 @@
+// This is Cal.js v1.0.0 First major release.
+
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import tailwind from "tailwind-rn";
@@ -26,6 +28,14 @@ const Cal = () => {
   };
 
   const calculaingHandle = () => {
+    // ÷
+    if (dataArray.length === 2 && operatorArray[0] === "/") {
+      dataArray.push(
+        Number(
+          dataArray[dataArray.length - 2] / dataArray[dataArray.length - 1]
+        )
+      );
+    }
     // *
     if (dataArray.length === 2 && operatorArray[0] === "*") {
       dataArray.push(
@@ -61,6 +71,7 @@ const Cal = () => {
     console.log("-----------------------------------");
   };
 
+  // C
   const onClearButtonPress = () => {
     setText("");
     setPlaceHolder("0");
@@ -69,12 +80,29 @@ const Cal = () => {
     setCalculatedArray([]);
   };
 
+  // =
   const onEqualPress = () => {
     console.log(operatorArray);
     operatorArray.length >= 1 ? dataArray.push(Number(text)) : null;
-    calculaingHandle();
+    text === "" || text === "0" ? null : calculaingHandle();
   };
 
+  // ÷
+  const onDividePress = () => {
+    console.log("÷ pressed");
+    if (operatorArray[0]) {
+      operatorArray.pop();
+      operatorArray.push("/");
+      setPlaceHolder(placeHolder.slice(0, -1) + "÷");
+    } else {
+      operatorArray.push("/");
+      dataArray.push(Number(text));
+      setPlaceHolder(text + "÷");
+      setText("");
+    }
+  };
+
+  // *
   const onMultipyPress = () => {
     console.log("* pressed");
     if (operatorArray[0]) {
@@ -89,6 +117,7 @@ const Cal = () => {
     }
   };
 
+  // +
   const onPlusPress = () => {
     text === "-"
       ? setText("")
@@ -98,6 +127,7 @@ const Cal = () => {
     setText("");
   };
 
+  // -
   const onMinusPress = () => {
     if (text === "") {
       setText("-");
@@ -109,6 +139,7 @@ const Cal = () => {
     }
   };
 
+  // .
   const onDotPress = () => {
     text === "" ? setText(0 + ".") : setText(text + ".");
   };
@@ -297,6 +328,7 @@ const Cal = () => {
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
             // Divide sign
+            onPress={() => onDividePress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>÷</Text>
           </TouchableOpacity>
