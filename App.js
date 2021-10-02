@@ -48,7 +48,7 @@ export default function App() {
           children={() => <Home />}
           name="Home"
           options={{
-            headerLeft: () => <AboutButton />,
+            headerLeft: () => <AboutButton calAlert={false} />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
@@ -75,7 +75,7 @@ export default function App() {
           name="Cal"
           options={{
             headerLeft: () => <BackButton />,
-            headerRight: () => <AboutButton />,
+            headerRight: () => <AboutButton calAlert={true} />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
