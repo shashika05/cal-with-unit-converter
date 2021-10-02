@@ -52,7 +52,7 @@ export default function App() {
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
-              <Text style={{ fontFamily: "M600", fontSize: 18 }}>Home</Text>
+              <Text style={{ fontFamily: "M700", fontSize: 20 }}>Home</Text>
             ),
             headerTitleAlign: "center",
           }}
@@ -65,7 +65,7 @@ export default function App() {
             headerBackTitleVisible: false,
             headerBackVisible: false,
             headerTitle: () => (
-              <Text style={{ fontFamily: "M600", fontSize: 18 }}>About Me</Text>
+              <Text style={{ fontFamily: "M700", fontSize: 20 }}>About Me</Text>
             ),
             headerTitleAlign: "center",
           }}
@@ -79,7 +79,7 @@ export default function App() {
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
-              <Text style={{ fontFamily: "M600", fontSize: 18 }}>
+              <Text style={{ fontFamily: "M700", fontSize: 20 }}>
                 Calculator
               </Text>
             ),
