@@ -163,6 +163,8 @@ const Cal = () => {
         ]}
       >
         <TextInput
+          showSoftInputOnFocus={false}
+          keyboardType="numeric"
           style={[
             tailwind("w-72 h-12 border-b-2 border-gray-800 mt-2 rounded-xl"),
             { fontSize: 28, fontFamily: "M400", paddingRight: 52 },
@@ -171,7 +173,6 @@ const Cal = () => {
           onChangeText={(e) => setText(e)}
           placeholder={placeHolder}
           textAlign="right"
-          keyboardType="numeric"
         />
         <TouchableOpacity
           // Clear Button
