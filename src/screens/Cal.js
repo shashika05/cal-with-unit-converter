@@ -60,7 +60,7 @@ const Cal = () => {
         )
       );
     }
-    setText(String(dataArray[dataArray.length - 1]));
+    setText(String(dataArray[dataArray.length - 1].toFixed(4)));
     setDataArray([]);
     text === "" ? null : dataArray.push(Number(text));
     operatorArray.pop();
