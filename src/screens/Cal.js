@@ -26,6 +26,14 @@ const Cal = () => {
   };
 
   const calculaingHandle = () => {
+    // *
+    if (dataArray.length === 2 && operatorArray[0] === "*") {
+      dataArray.push(
+        Number(
+          dataArray[dataArray.length - 1] * dataArray[dataArray.length - 2]
+        )
+      );
+    }
     // +
     if (dataArray.length === 2 && operatorArray[0] === "+") {
       dataArray.push(
@@ -33,7 +41,6 @@ const Cal = () => {
           dataArray[dataArray.length - 1] + dataArray[dataArray.length - 2]
         )
       );
-      setText(String(dataArray[dataArray.length - 1]));
     }
     // -
     if (dataArray.length === 2 && operatorArray[0] === "-") {
@@ -42,8 +49,8 @@ const Cal = () => {
           dataArray[dataArray.length - 2] - dataArray[dataArray.length - 1]
         )
       );
-      setText(String(dataArray[dataArray.length - 1]));
     }
+    setText(String(dataArray[dataArray.length - 1]));
     setDataArray([]);
     text === "" ? null : dataArray.push(Number(text));
     operatorArray.pop();
@@ -68,8 +75,27 @@ const Cal = () => {
     calculaingHandle();
   };
 
-  const onDotPress = () => {
-    text === "" ? setText(0 + ".") : setText(text + ".");
+  const onMultipyPress = () => {
+    console.log("* pressed");
+    if (operatorArray[0]) {
+      operatorArray.pop();
+      operatorArray.push("*");
+      setPlaceHolder(placeHolder.slice(0, -1) + "×");
+    } else {
+      operatorArray.push("*");
+      dataArray.push(Number(text));
+      setPlaceHolder(text + "×");
+      setText("");
+    }
+  };
+
+  const onPlusPress = () => {
+    text === "-"
+      ? setText("")
+      : dataArray.push(Number(text)) &&
+        operatorArray.push("+") &&
+        setPlaceHolder(text + "+");
+    setText("");
   };
 
   const onMinusPress = () => {
@@ -83,13 +109,8 @@ const Cal = () => {
     }
   };
 
-  const onPlusPress = () => {
-    text === "-"
-      ? setText("")
-      : dataArray.push(Number(text)) &&
-        operatorArray.push("+") &&
-        setPlaceHolder(text + "+");
-    setText("");
+  const onDotPress = () => {
+    text === "" ? setText(0 + ".") : setText(text + ".");
   };
 
   return (
@@ -237,6 +258,7 @@ const Cal = () => {
               "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
             )}
             // Multipy sign
+            onPress={() => onMultipyPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>×</Text>
           </TouchableOpacity>
