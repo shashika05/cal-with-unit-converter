@@ -39,7 +39,7 @@ const Cal = () => {
     if (dataArray.length === 2 && operatorArray[0] === "-") {
       dataArray.push(
         Number(
-          dataArray[dataArray.length - 1] - dataArray[dataArray.length - 2]
+          dataArray[dataArray.length - 2] - dataArray[dataArray.length - 1]
         )
       );
       setText(String(dataArray[dataArray.length - 1]));
@@ -63,33 +63,24 @@ const Cal = () => {
   };
 
   const onEqualPress = () => {
-    // Equal Handle
-    // dataArray[0] === null && text === "0" ? null : dataArray.push(Number(text));
     console.log(operatorArray);
     operatorArray.length >= 1 ? dataArray.push(Number(text)) : null;
     calculaingHandle();
-    // console.log(typeof Number(text), Number(text));
-    // console.log("dataArray: ", dataArray);
-    // console.log("operatorArray: ", operatorArray);
-    // console.log("calculatedArray: ", calculatedArray);
-    // console.log("-----------------------------------");
-    //
   };
 
   const onDotPress = () => {
     text === "" ? setText(0 + ".") : setText(text + ".");
   };
 
-  ////////////////////////////////////////////////////////
   const onMinusPress = () => {
     if (text === "") {
       setText("-");
+    } else {
+      dataArray.push(Number(text));
+      operatorArray.push("-");
+      setPlaceHolder(text + "-");
+      setText("");
     }
-
-    dataArray.push(Number(text));
-    operatorArray.push("-");
-    setPlaceHolder(text + "-");
-    setText("");
   };
 
   const onPlusPress = () => {
@@ -100,7 +91,6 @@ const Cal = () => {
         setPlaceHolder(text + "+");
     setText("");
   };
-  ////////////////////////////////////////////////////////
 
   return (
     <View style={tailwind("flex items-center w-full h-full")}>
