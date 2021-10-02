@@ -27,6 +27,14 @@ const Cal = () => {
     }
   };
 
+  const decimalHandle = (num) => {
+    if (num % 1 === 0) {
+      return num;
+    } else {
+      return dataArray[dataArray.length - 1].toFixed(4);
+    }
+  };
+
   const calculaingHandle = () => {
     // ÷
     if (dataArray.length === 2 && operatorArray[0] === "/") {
@@ -60,7 +68,7 @@ const Cal = () => {
         )
       );
     }
-    setText(String(dataArray[dataArray.length - 1].toFixed(4)));
+    setText(String(decimalHandle(dataArray[dataArray.length - 1])));
     setDataArray([]);
     text === "" ? null : dataArray.push(Number(text));
     operatorArray.pop();
@@ -333,6 +341,8 @@ const Cal = () => {
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>÷</Text>
           </TouchableOpacity>
         </View>
+      </View>
+      <View>
         <TouchableOpacity
           // Equal Sign
           // activeOpacity={0.97}
@@ -340,7 +350,7 @@ const Cal = () => {
             tailwind(
               "absolute justify-center items-center w-16 h-16 bg-gray-800 rounded-full ml-2"
             ),
-            { right: -40, bottom: -40 },
+            { right: -180, bottom: -30 },
           ]}
           onPress={() => onEqualPress()}
         >
