@@ -1276,13 +1276,6 @@
     lodash.pick "^4.4.0"
     lodash.template "^4.5.0"
 
-"@gregfrench/react-native-wheel-picker@^1.2.16":
-  version "1.2.16"
-  resolved "https://registry.yarnpkg.com/@gregfrench/react-native-wheel-picker/-/react-native-wheel-picker-1.2.16.tgz#db7ea16fbd6ac0c9c88c699492806efcd2ddf0c6"
-  integrity sha512-GojKngBkcIi34bJ2Sq71dgEuyJ8aLASugR8u3zUcqNoB9Rs7iJQBgZm5lCX5K4fzvUqepGaGL45FQrsJzBAt1g==
-  dependencies:
-    "@react-native-picker/picker" "^1.9.4"
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -1521,11 +1514,6 @@
     strip-ansi "^5.2.0"
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
-
-"@react-native-picker/picker@^1.9.4":
-  version "1.16.8"
-  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.16.8.tgz#2126ca54d4a5a3e9ea5e3f39ad1e6643f8e4b3d4"
-  integrity sha512-pacdQDX6V6EmjF+HoiIh6u++qx4mTK0WnhgUHRc01B+Qt5eoeUwseBqmqfTSXTx/aHDEd6PiIw7UGvKgFoqgFQ==
 
 "@react-navigation/core@^6.0.2":
   version "6.0.2"
