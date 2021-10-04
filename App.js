@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 import Home from "./src/screens/Home";
 import Cal from "./src/screens/Cal";
 import About from "./src/screens/About";
+import Converter from "./src/screens/Converter";
 
 // Nav-Buttons
 import BackButton from "./src/components/buttons/BackButton";
@@ -75,12 +76,30 @@ export default function App() {
           name="Cal"
           options={{
             headerLeft: () => <BackButton />,
-            headerRight: () => <AboutButton calAlert={true} />,
+            headerRight: () => <AboutButton alert={true} />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
             headerTitle: () => (
               <Text style={{ fontFamily: "M700", fontSize: 20 }}>
                 Calculator
+              </Text>
+            ),
+            headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          children={() => <Converter />}
+          name="Converter"
+          options={{
+            headerLeft: () => <BackButton />,
+            headerRight: () => (
+              <AboutButton alert={true} converterAlert={true} />
+            ),
+            headerBackVisible: false,
+            headerBackTitleVisible: false,
+            headerTitle: () => (
+              <Text style={{ fontFamily: "M700", fontSize: 20 }}>
+                Converter
               </Text>
             ),
             headerTitleAlign: "center",

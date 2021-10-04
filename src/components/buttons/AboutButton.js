@@ -3,23 +3,28 @@ import { Alert, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const AboutButton = ({ calAlert }) => {
+const AboutButton = ({ alert, converterAlert }) => {
   const navigation = useNavigation();
 
   const alertHandle = () => {
-    Alert.alert("Calculator", "version 1.0.0", [
-      {
-        text: "OK",
-        style: "cancel",
-      },
-      { text: "More", onPress: () => navigation.navigate("About") },
-    ]);
+    // Needs alert handle in Converter.js
+    Alert.alert(
+      `${converterAlert ? "Converter" : "Calculater"}`,
+      `${converterAlert ? "version 1.0.0" : "version 1.0.0"}`,
+      [
+        {
+          text: "OK",
+          style: "cancel",
+        },
+        { text: "More", onPress: () => navigation.navigate("About") },
+      ]
+    );
   };
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={() =>
-        calAlert === true ? alertHandle() : navigation.navigate("About")
+        alert === true ? alertHandle() : navigation.navigate("About")
       }
     >
       <Feather name="info" size={24} color="black" />
