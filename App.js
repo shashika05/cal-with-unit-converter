@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -16,6 +16,8 @@ import AboutButton from "./src/components/buttons/AboutButton";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+  // useState for converter last state
+  const [conversion, setConversion] = useState("area");
   // Used useFonts hook to use custom fonts
   const [loaded] = useFonts({
     M100: require("./assets/fonts/M100.ttf"),
@@ -88,7 +90,9 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          children={() => <Converter />}
+          children={() => (
+            <Converter conversion={conversion} setConversion={setConversion} />
+          )}
           name="Converter"
           options={{
             headerLeft: () => <BackButton />,
