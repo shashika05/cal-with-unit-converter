@@ -3,6 +3,18 @@ const converters = [
     id: 1,
     label: "Area",
     value: "area",
+    units: [
+      { unit: "kilometre" },
+      { unit: "Meter" },
+      { unit: "Centimetre" },
+      { unit: "micrometres" },
+      { unit: "Nanometre" },
+      { unit: "Mile" },
+      { unit: "Yard" },
+      { unit: "Foot" },
+      { unit: "Inch" },
+      { unit: "Nautical mile" },
+    ],
   },
   {
     id: 2,
