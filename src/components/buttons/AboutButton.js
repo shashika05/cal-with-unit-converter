@@ -9,7 +9,7 @@ const AboutButton = ({ alert, converterAlert }) => {
   const alertHandle = () => {
     // Needs alert handle in Converter.js
     Alert.alert(
-      `${converterAlert ? "Converter" : "Calculater"}`,
+      `${converterAlert ? "Converter" : "Calculator"}`,
       `${converterAlert ? "version 1.0.0" : "version 1.0.0"}`,
       [
         {
