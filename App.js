@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { Text, StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -48,12 +48,19 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
-          children={() => <Home />}
+          children={() => (
+            <>
+              <Home />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="Home"
           options={{
             headerLeft: () => <AboutButton calAlert={false} />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
+            headerTransparent: false,
+            statusBarStyle: "dark",
             headerTitle: () => (
               <Text style={{ fontFamily: "M700", fontSize: 20 }}>Home</Text>
             ),
@@ -61,7 +68,12 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          children={() => <About />}
+          children={() => (
+            <>
+              <About />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="About"
           options={{
             headerLeft: () => <BackButton />,
@@ -74,7 +86,12 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          children={() => <Cal />}
+          children={() => (
+            <>
+              <Cal />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="Cal"
           options={{
             headerLeft: () => <BackButton />,
@@ -91,7 +108,10 @@ export default function App() {
         />
         <Stack.Screen
           children={() => (
-            <Converter conversion={conversion} setConversion={setConversion} />
+            <>
+              <Converter />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
           )}
           name="Converter"
           options={{
