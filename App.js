@@ -17,7 +17,7 @@ import AboutButton from "./src/components/buttons/AboutButton";
 const Stack = createNativeStackNavigator();
 export default function App() {
   // useState for converter last state
-  const [conversion, setConversion] = useState("area");
+  // const [conversion, setConversion] = useState("area");
   // Used useFonts hook to use custom fonts
   const [loaded] = useFonts({
     M100: require("./assets/fonts/M100.ttf"),
