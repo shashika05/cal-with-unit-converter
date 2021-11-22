@@ -92,7 +92,9 @@ const Cal = () => {
   const onEqualPress = () => {
     console.log(operatorArray);
     operatorArray.length >= 1 ? dataArray.push(Number(text)) : null;
-    text === "" || text === "0" ? null : calculaingHandle();
+    text === "" || text === "0" || operatorArray.length === 0
+      ? null
+      : calculaingHandle();
   };
 
   // ÷
@@ -217,7 +219,7 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-blue-600 rounded-xl ml-2"
             )}
             // Plus sign
             onPress={() => onPlusPress()}
@@ -256,7 +258,7 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-blue-600 rounded-xl ml-2"
             )}
             // Minus sign
             onPress={() => onMinusPress()}
@@ -295,7 +297,7 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-blue-600 rounded-xl ml-2"
             )}
             // Multipy sign
             onPress={() => onMultipyPress()}
@@ -307,8 +309,9 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-purple-500 rounded-xl ml-2"
             )}
+            // C button
             onPress={() => onClearButtonPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>C</Text>
@@ -325,8 +328,9 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-purple-500 rounded-xl ml-2"
             )}
+            // Dot Press
             onPress={() => onDotPress()}
           >
             <Text style={{ fontFamily: "M600", fontSize: 24 }}>.</Text>
@@ -334,7 +338,7 @@ const Cal = () => {
           <TouchableOpacity
             activeOpacity={0.8}
             style={tailwind(
-              "justify-center items-center w-14 h-16 bg-blue-400 rounded-xl ml-2"
+              "justify-center items-center w-14 h-16 bg-blue-600 rounded-xl ml-2"
             )}
             // Divide sign
             onPress={() => onDividePress()}

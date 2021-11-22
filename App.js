@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { Text, StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -110,6 +110,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
+      <StatusBar backgroundColor="blue" barStyle="dark-content" />
     </NavigationContainer>
   );
 }
