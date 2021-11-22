@@ -9,7 +9,7 @@ import converter from "../../ConverterArray";
 
 import Background from "../components/Background";
 
-const Converter = ({ conversion, setConversion }) => {
+const Converter = () => {
   const [inputValue, setInputValue] = useState("1");
   const [converterArrayIndex, setConverterArrayIndex] = useState(0);
   const [inputUnit, setInputUnit] = useState("kilometre");
@@ -25,9 +25,9 @@ const Converter = ({ conversion, setConversion }) => {
             marginBottom: Platform.OS === "ios" ? 180 : 10,
           },
         ]}
-        selectedValue={conversion}
+        // selectedValue={conversion}
         onValueChange={(itemValue, itemIndex) => {
-          setConversion(itemValue);
+          // setConversion(itemValue);
           setConverterArrayIndex(itemIndex);
         }}
         itemStyle={{ fontFamily: "M500" }}
@@ -88,6 +88,9 @@ const Converter = ({ conversion, setConversion }) => {
             );
           })}
         </Picker>
+        <Text style={{ fontFamily: "M500", fontSize: 18, marginTop: 12 }}>
+          {"=> to =>"}
+        </Text>
         <Picker
           style={[
             tailwind("h-12 w-36"),

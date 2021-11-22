@@ -17,7 +17,7 @@ import AboutButton from "./src/components/buttons/AboutButton";
 const Stack = createNativeStackNavigator();
 export default function App() {
   // useState for converter last state
-  const [conversion, setConversion] = useState("area");
+  // const [conversion, setConversion] = useState("area");
   // Used useFonts hook to use custom fonts
   const [loaded] = useFonts({
     M100: require("./assets/fonts/M100.ttf"),
@@ -48,12 +48,19 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
-          children={() => <Home />}
+          children={() => (
+            <>
+              <Home />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="Home"
           options={{
             headerLeft: () => <AboutButton calAlert={false} />,
             headerBackVisible: false,
             headerBackTitleVisible: false,
+            headerTransparent: false,
+            statusBarStyle: "dark",
             headerTitle: () => (
               <Text style={{ fontFamily: "M700", fontSize: 20 }}>Home</Text>
             ),
@@ -61,7 +68,12 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          children={() => <About />}
+          children={() => (
+            <>
+              <About />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="About"
           options={{
             headerLeft: () => <BackButton />,
@@ -74,7 +86,12 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          children={() => <Cal />}
+          children={() => (
+            <>
+              <Cal />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
+          )}
           name="Cal"
           options={{
             headerLeft: () => <BackButton />,
@@ -91,7 +108,10 @@ export default function App() {
         />
         <Stack.Screen
           children={() => (
-            <Converter conversion={conversion} setConversion={setConversion} />
+            <>
+              <Converter />
+              <StatusBar backgroundColor="black" barStyle="dark-content" />
+            </>
           )}
           name="Converter"
           options={{
